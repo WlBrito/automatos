@@ -33,6 +33,7 @@ public class Main {
 
         ER.confere(ER.INTEIRO, "10");
 
+        // Teste 10, expressão regular: ASSINATURA FUNCAO ERROR
         ER.confere(ER.FUNCAO, "int soma(int a, int b)");
     }
 }

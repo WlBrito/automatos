@@ -37,7 +37,7 @@ public class ExpressaoRegular {
         // PARAMETROS = "(" + TIPO + BRANCOS + IDENT + BRANCOS)";
         PARAM = "(" + TIPO + BRANCOS + IDENT + BRANCOS + ")";
         PARAMS = "(" + PARAM + "(," + PARAM + ")*)";
-        FUNCAO = "(" + TIPO + BRANCOS + IDENT + BRANCOS + "\\(" + PARAMS + "\\))";
+        FUNCAO = "(" + TIPO + BRANCOS + IDENT + BRANCOS + "\\(" + PARAMS + "\\))"; // errado ainda, pq?
 
     }
 
