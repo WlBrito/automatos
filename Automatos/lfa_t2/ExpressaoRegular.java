@@ -11,6 +11,10 @@ public class ExpressaoRegular {
     public String INTEIRO;
     public String NUMEROS;
     public String ATRIBUICAO;
+    public String TIPO;
+    public String PARAM;
+    public String PARAMS;
+    public String FUNCAO;
 
     public ExpressaoRegular() {
         // ' ' (espaço), '\t' TAB, '\n' new line, '\r' volta o cursos para o inicio da
@@ -27,8 +31,14 @@ public class ExpressaoRegular {
         REAL = "(\\-?" + DIGITOS + "\\.?" + DIGITOS + EXPONENCIAL + ")";
         INTEIRO = "(" + DIGITOS + EXPONENCIAL + "?)";
         NUMEROS = "(" + INTEIRO + "|" + REAL + ")";
-
         ATRIBUICAO = IDENT + BRANCOS + "=" + BRANCOS + REAL;
+        // TIPO = TIPOS PRIMITIVOS (void, int, float, double, char, String, boolean)
+        TIPO = "(void|int|float|double|char|String|boolean)";
+        // PARAMETROS = "(" + TIPO + BRANCOS + IDENT + BRANCOS)";
+        PARAM = "(" + TIPO + BRANCOS + IDENT + BRANCOS + ")";
+        PARAMS = "(" + PARAM + "(," + PARAM + ")*)";
+        FUNCAO = "(" + TIPO + BRANCOS + IDENT + BRANCOS + "\\(" + PARAMS + "\\))"; // errado ainda, pq?
+
     }
 
     public void confere(String exp, String sentenca) {
