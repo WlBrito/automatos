@@ -18,6 +18,23 @@ public class ExpressaoRegular {
     public String OPERADOR;
     public String CONDICAO;
     public String IF;
+    
+    //Exercicio 4
+    public String EXPRESSAOMATEMATICA;
+    public String OPERADORMATEMATICO;
+    public String DIGITOSEMZERO;
+    public String DIGITOSSEMZERO;
+    public String EXPONENCIALSEMZERO;
+    public String REALSEMZERO;
+    public String ARRAY;
+    public String IDENTIFICADOR;
+    public String CAMPO;
+    public String OPERANDO;
+    public String CHAMADAFUNCAO;
+    public String GRUPO;
+    
+        
+
 
     public ExpressaoRegular() {
         // ' ' (espaço), '\t' TAB, '\n' new line, '\r' volta o cursos para o inicio da
@@ -52,6 +69,29 @@ public class ExpressaoRegular {
         CONDICAO = IDENT + BRANCOS + OPERADOR + BRANCOS + "(" + IDENT + "|" + NUMEROS + ")";
         // IF = PALAVRA "IF" + ESPAÇO EM BRANCO + "(" + CONDICAO + ")"
         IF = "if" + BRANCOS + "\\(" + BRANCOS + CONDICAO + BRANCOS + "\\)";
+        
+        
+        //Exercicio 4
+        OPERADORMATEMATICO = "(/|\\*|\\+|-)";
+        
+        DIGITOSEMZERO = "[1-9]";
+        DIGITOSSEMZERO = "(" + DIGITOSEMZERO + DIGITO + ")" + "*";
+        
+        EXPONENCIALSEMZERO = DIGITOSSEMZERO + "\\^" + DIGITOSSEMZERO;
+        REALSEMZERO = "(\\-?" + DIGITOSEMZERO + "\\.?" + DIGITOS + "(" + EXPONENCIAL + ")?)";
+        
+        GRUPO = "\\(" + BRANCOS + OPERANDO + BRANCOS + "\\)";
+        
+        
+        
+        ARRAY = IDENT + "(\\[" + DIGITOS + "\\])";   
+        CAMPO = ARRAY + "?" + "(" + "\\."  + IDENT + ")+";
+        
+        OPERANDO = "(" + REAL + "|" + CAMPO + "|" + ARRAY + "|" + CHAMADAFUNCAO + "|" + IDENT + ")";
+        GRUPO = "\\(" + BRANCOS + OPERANDO + "(" + BRANCOS + OPERADORMATEMATICO + BRANCOS + OPERANDO + ")*" + BRANCOS + "\\)";
+
+        EXPRESSAOMATEMATICA = BRANCOS + "(" + OPERANDO + "|" + GRUPO + ")" + "(" + BRANCOS + OPERADORMATEMATICO + BRANCOS + "(" + OPERANDO + "|" + GRUPO + ")" + ")*" + BRANCOS;
+
     }
 
     public void confere(String exp, String sentenca) {
