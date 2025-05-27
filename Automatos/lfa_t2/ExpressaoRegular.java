@@ -15,6 +15,9 @@ public class ExpressaoRegular {
     public String PARAM;
     public String PARAMS;
     public String FUNCAO;
+    public String OPERADOR;
+    public String CONDICAO;
+    public String IF;
 
     public ExpressaoRegular() {
         // ' ' (espaço), '\t' TAB, '\n' new line, '\r' volta o cursos para o inicio da
@@ -28,7 +31,9 @@ public class ExpressaoRegular {
         LETRAS = LETRA + "*";
         IDENT = "(" + LETRA + "(" + LETRA + "|" + DIGITO + ")*)";
         EXPONENCIAL = "(E(\\+|-)" + DIGITOS + ")";
-        REAL = "(\\-?" + DIGITOS + "\\.?" + DIGITOS + EXPONENCIAL + ")";
+        // ERRO AQUI: O padrão REAL não estava correto, pois não considerava o caso de
+        // números sem parte decimal.
+        REAL = "(\\-?" + DIGITOS + "\\.?" + DIGITOS + "(" + EXPONENCIAL + ")?)";
         INTEIRO = "(" + DIGITOS + EXPONENCIAL + "?)";
         NUMEROS = "(" + INTEIRO + "|" + REAL + ")";
         ATRIBUICAO = IDENT + BRANCOS + "=" + BRANCOS + REAL;
@@ -40,7 +45,13 @@ public class ExpressaoRegular {
         PARAMS = "(" + BRANCOS + "(" + PARAM + "(" + BRANCOS + "," + BRANCOS + PARAM + ")*)?" + BRANCOS + ")";
         // FUNCAO = "(" + TIPO + BRANCOS + IDENT + BRANCOS + "\\(" + PARAMS + "\\)" +
         FUNCAO = "(" + TIPO + BRANCOS + IDENT + BRANCOS + "\\(" + PARAMS + "\\)" + ")";
-
+        // OPERADOR = "(\\+|\\-|\\*|\\/|%|\\=|\\<|\\>|\\!|\\&|\\||\\^|\\~)";
+        OPERADOR = "(==|!=|<=|>=|<|>)";
+        // CONDICAO = IDENT + BRANCOS + OPERADOR + BRANCOS + "(" + IDENT + "|" + NUMEROS
+        // + ")";
+        CONDICAO = IDENT + BRANCOS + OPERADOR + BRANCOS + "(" + IDENT + "|" + NUMEROS + ")";
+        // IF = PALAVRA "IF" + ESPAÇO EM BRANCO + "(" + CONDICAO + ")"
+        IF = "if" + BRANCOS + "\\(" + BRANCOS + CONDICAO + BRANCOS + "\\)";
     }
 
     public void confere(String exp, String sentenca) {

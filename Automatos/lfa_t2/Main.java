@@ -35,5 +35,8 @@ public class Main {
 
         // Teste 10, expressão regular: ASSINATURA FUNCAO ERROR
         ER.confere(ER.FUNCAO, "int soma(int a, int b)");
+
+        // Teste 11, expressão regular: IF
+        ER.confere(ER.IF, "if (altura > 1.70)");
     }
 }
