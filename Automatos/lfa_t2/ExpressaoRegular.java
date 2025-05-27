@@ -35,9 +35,11 @@ public class ExpressaoRegular {
         // TIPO = TIPOS PRIMITIVOS (void, int, float, double, char, String, boolean)
         TIPO = "(void|int|float|double|char|String|boolean)";
         // PARAMETROS = "(" + TIPO + BRANCOS + IDENT + BRANCOS)";
-        PARAM = "(" + TIPO + BRANCOS + IDENT + BRANCOS + ")";
-        PARAMS = "(" + PARAM + "(," + PARAM + ")*)";
-        FUNCAO = "(" + TIPO + BRANCOS + IDENT + BRANCOS + "\\(" + PARAMS + "\\))"; // errado ainda, pq?
+        PARAM = "(" + TIPO + BRANCOS + IDENT + ")";
+        // PARAMS = "(" + BRANCOS + "(" + PARAM + "(" + BRANCOS + "," + BRANCOS +
+        PARAMS = "(" + BRANCOS + "(" + PARAM + "(" + BRANCOS + "," + BRANCOS + PARAM + ")*)?" + BRANCOS + ")";
+        // FUNCAO = "(" + TIPO + BRANCOS + IDENT + BRANCOS + "\\(" + PARAMS + "\\)" +
+        FUNCAO = "(" + TIPO + BRANCOS + IDENT + BRANCOS + "\\(" + PARAMS + "\\)" + ")";
 
     }
 
