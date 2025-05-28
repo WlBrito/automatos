@@ -87,6 +87,8 @@ public class ExpressaoRegular {
         ARRAY = IDENT + "(\\[" + DIGITOS + "\\])";   
         CAMPO = ARRAY + "?" + "(" + "\\."  + IDENT + ")+";
         
+        CHAMADAFUNCAO = BRANCOS + IDENT + "\\(" +"(" + BRANCOS + REALSEMZERO + "|" +IDENT + "|" + "\\," + ")+" + "\\)";
+        
         OPERANDO = "(" + REAL + "|" + CAMPO + "|" + ARRAY + "|" + CHAMADAFUNCAO + "|" + IDENT + ")";
         GRUPO = "\\(" + BRANCOS + OPERANDO + "(" + BRANCOS + OPERADORMATEMATICO + BRANCOS + OPERANDO + ")*" + BRANCOS + "\\)";
 
