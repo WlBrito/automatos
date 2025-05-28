@@ -79,11 +79,7 @@ public class ExpressaoRegular {
         
         EXPONENCIALSEMZERO = DIGITOSSEMZERO + "\\^" + DIGITOSSEMZERO;
         REALSEMZERO = "(\\-?" + DIGITOSEMZERO + "\\.?" + DIGITOS + "(" + EXPONENCIAL + ")?)";
-        
-        GRUPO = "\\(" + BRANCOS + OPERANDO + BRANCOS + "\\)";
-        
-        
-        
+               
         ARRAY = IDENT + "(\\[" + DIGITOS + "\\])";   
         CAMPO = ARRAY + "?" + "(" + "\\."  + IDENT + ")+";
         
