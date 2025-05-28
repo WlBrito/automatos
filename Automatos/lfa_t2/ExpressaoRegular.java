@@ -19,7 +19,7 @@ public class ExpressaoRegular {
     public String CONDICAO;
     public String IF;
     
-    //Exercicio 4
+    //Exercício 4
     public String EXPRESSAOMATEMATICA;
     public String OPERADORMATEMATICO;
     public String DIGITOSEMZERO;
@@ -32,9 +32,14 @@ public class ExpressaoRegular {
     public String OPERANDO;
     public String CHAMADAFUNCAO;
     public String GRUPO;
+    public String NUMEROS_IMPARES;
     
-        
-
+    
+    //Exercício 5
+    
+    public String EXERCICIO5_A;
+    public String EXERCICIO5_B;
+    
 
     public ExpressaoRegular() {
         // ' ' (espaço), '\t' TAB, '\n' new line, '\r' volta o cursos para o inicio da
@@ -79,7 +84,11 @@ public class ExpressaoRegular {
         
         EXPONENCIALSEMZERO = DIGITOSSEMZERO + "\\^" + DIGITOSSEMZERO;
         REALSEMZERO = "(\\-?" + DIGITOSEMZERO + "\\.?" + DIGITOS + "(" + EXPONENCIAL + ")?)";
-               
+        
+        GRUPO = "\\(" + BRANCOS + OPERANDO + BRANCOS + "\\)";
+        
+        
+        
         ARRAY = IDENT + "(\\[" + DIGITOS + "\\])";   
         CAMPO = ARRAY + "?" + "(" + "\\."  + IDENT + ")+";
         
@@ -90,6 +99,12 @@ public class ExpressaoRegular {
 
         EXPRESSAOMATEMATICA = BRANCOS + "(" + OPERANDO + "|" + GRUPO + ")" + "(" + BRANCOS + OPERADORMATEMATICO + BRANCOS + "(" + OPERANDO + "|" + GRUPO + ")" + ")*" + BRANCOS;
 
+        
+        //Atividade 5
+        NUMEROS_IMPARES = "(" + "1" + "|" + "3" + "|" + "5" + "|" + "7" + "|" + "9" + ")";
+        EXERCICIO5_A = "(" + REAL + REAL + "(" + REAL + ")+";
+        EXERCICIO5_B = "(" + BRANCOS + "|" + REAL + "|" + DIGITOS + ")+" + BRANCOS + NUMEROS_IMPARES;
+        
     }
 
     public void confere(String exp, String sentenca) {
