@@ -1,7 +1,7 @@
 package lfa_t2;
 
 public class ExpressaoRegular {
-    
+
     public String BRANCO, BRANCOS;
     public String DIGITO, DIGITOS;
     public String LETRA, LETRAS;
@@ -93,9 +93,6 @@ public class ExpressaoRegular {
         // ERRO DE PARENTESES AQUI, MAS ONDE ??????
         
         PARCELA = "("+NUMEROS + "|" + IDENT+")";
-        EXPRESSAOMAT =  PARCELA +
-                "(" + BRANCOS + OPERADORMATEMATICO  
-                 + BRANCOS + PARCELA + ")+" ;
 
         /*
          * CONDICAO = "\\(" "(""("IDENT | EXPRESSAOMAT")" + BRANCOS + OPERADORLOG +
@@ -116,7 +113,8 @@ public class ExpressaoRegular {
 
         DIGITOSEMZERO = "[1-9]";
         DIGITOSSEMZERO = "(" + DIGITOSEMZERO + DIGITO + ")" + "*";
-        REALSEMZERO = "(\\-?" + DIGITOSEMZERO + "\\.?" + DIGITOS + "(" + EXPONENCIAL + ")?)";
+       REALSEMZERO = "(" + DIGITO + DIGITOS + "\\.?" + DIGITOS + "?)";
+
 
         GRUPO = "\\(" + BRANCOS + OPERANDO + BRANCOS + "\\)";
 
@@ -126,16 +124,16 @@ public class ExpressaoRegular {
         CHAMADAFUNCAO = BRANCOS + IDENT + "\\(" + "(" + BRANCOS + REALSEMZERO + "|" + IDENT + "|" + "\\," + ")+"
                 + "\\)";
 
-        OPERANDO = "(" + REAL + "|" + CAMPO + "|" + ARRAY + "|" + CHAMADAFUNCAO + "|" + IDENT + ")";
+        OPERANDO = "(" + REALSEMZERO + "|" + CAMPO + "|" + ARRAY + "|" + CHAMADAFUNCAO + "|" + IDENT + ")";
         GRUPO = "\\(" + BRANCOS + OPERANDO + "(" + BRANCOS + OPERADORMATEMATICO + BRANCOS + OPERANDO + ")+" + BRANCOS
                 + "\\)";
 
-        EXPRESSAOMATEMATICA = BRANCOS + "(" + "(" + OPERANDO + "|" + GRUPO + ")" + "(" + BRANCOS + OPERADORMATEMATICO
+        EXPRESSAOMATEMATICA = BRANCOS + "(" + OPERANDO + "|" + GRUPO + ")" + "(" + "(" + BRANCOS + OPERADORMATEMATICO
                 + BRANCOS + ")" + "(" + OPERANDO + "|" + GRUPO + ")" + ")+" + BRANCOS;
 
         // Atividade 5
         NUMEROS_IMPARES = "(" + "1" + "|" + "3" + "|" + "5" + "|" + "7" + "|" + "9" + ")";
-        EXERCICIO5_A = "(" + REAL + REAL + "(" + REAL + ")+";
+        EXERCICIO5_A = "(" + REAL + REAL + "(" + REAL + ")+" + ")";
         EXERCICIO5_B = "(" + BRANCOS + "|" + REAL + "|" + DIGITOS + ")+" + BRANCOS + NUMEROS_IMPARES;
 
     }
