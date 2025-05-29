@@ -34,9 +34,15 @@ public class Main {
         ER.confere(ER.INTEIRO, "10");
 
         // Teste 10, expressão regular: ASSINATURA FUNCAO ERROR
-        ER.confere(ER.FUNCAO, "int soma(int a, int b)");
+        ER.confere(ER.FUNCAO, "int soma(int a, int b)"); // Correto
+        ER.confere(ER.FUNCAO, "void calcularMedia(float nota1, float nota2, float nota3)"); // Correto
+        ER.confere(ER.FUNCAO, "null calcularMedia(float nota1, float nota2, float nota3)"); // Erro: null não é um tipo
+        ER.confere(ER.FUNCAO, "void qualquercoisa(int n)"); // Correto apenas um parâmetro
 
         // Teste 11, expressão regular: IF
-        ER.confere(ER.IF, "if (altura > 1.70)");
+        ER.confere(ER.IF, "if (altura > 1.70)"); // Correto
+        ER.confere(ER.IF, "if(3*a != 4+t)"); // Correto
+        ER.confere(ER.IF, "if (altura > 1.70"); // Erro: falta fechar o bloco
+        ER.confere(ER.IF, "if (3*5 + 4+t) + 3 >= 5"); // PEEEEEEEEEEEEEEEEN
     }
 }
