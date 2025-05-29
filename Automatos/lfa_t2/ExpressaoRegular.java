@@ -1,7 +1,7 @@
 package lfa_t2;
 
 public class ExpressaoRegular {
-
+    
     public String BRANCO, BRANCOS;
     public String DIGITO, DIGITOS;
     public String LETRA, LETRAS;
@@ -35,6 +35,8 @@ public class ExpressaoRegular {
     public String GRUPO;
     public String NUMEROS_IMPARES;
 
+   public String PARCELA;
+    
     // Exercício 5
 
     public String EXERCICIO5_A;
@@ -89,8 +91,11 @@ public class ExpressaoRegular {
 
         OPERADORMATEMATICO = "(/|\\*|\\+|-)";
         // ERRO DE PARENTESES AQUI, MAS ONDE ??????
-        EXPRESSAOMAT = "(" + "(" + NUMEROS + "|" + IDENT + ")" + "(" + BRANCOS + OPERADORMATEMATICO + BRANCOS + "("
-                + NUMEROS + "|" + IDENT + ")" + ")*" + ")";
+        
+        PARCELA = "("+NUMEROS + "|" + IDENT+")";
+        EXPRESSAOMAT =  PARCELA +
+                "(" + BRANCOS + OPERADORMATEMATICO  
+                 + BRANCOS + PARCELA + ")+" ;
 
         /*
          * CONDICAO = "\\(" "(""("IDENT | EXPRESSAOMAT")" + BRANCOS + OPERADORLOG +
@@ -111,8 +116,6 @@ public class ExpressaoRegular {
 
         DIGITOSEMZERO = "[1-9]";
         DIGITOSSEMZERO = "(" + DIGITOSEMZERO + DIGITO + ")" + "*";
-
-        EXPONENCIALSEMZERO = DIGITOSSEMZERO + "\\^" + DIGITOSSEMZERO;
         REALSEMZERO = "(\\-?" + DIGITOSEMZERO + "\\.?" + DIGITOS + "(" + EXPONENCIAL + ")?)";
 
         GRUPO = "\\(" + BRANCOS + OPERANDO + BRANCOS + "\\)";
@@ -124,11 +127,11 @@ public class ExpressaoRegular {
                 + "\\)";
 
         OPERANDO = "(" + REAL + "|" + CAMPO + "|" + ARRAY + "|" + CHAMADAFUNCAO + "|" + IDENT + ")";
-        GRUPO = "\\(" + BRANCOS + OPERANDO + "(" + BRANCOS + OPERADORMATEMATICO + BRANCOS + OPERANDO + ")*" + BRANCOS
+        GRUPO = "\\(" + BRANCOS + OPERANDO + "(" + BRANCOS + OPERADORMATEMATICO + BRANCOS + OPERANDO + ")+" + BRANCOS
                 + "\\)";
 
-        EXPRESSAOMATEMATICA = BRANCOS + "(" + OPERANDO + "|" + GRUPO + ")" + "(" + BRANCOS + OPERADORMATEMATICO
-                + BRANCOS + "(" + OPERANDO + "|" + GRUPO + ")" + ")*" + BRANCOS;
+        EXPRESSAOMATEMATICA = BRANCOS + "(" + "(" + OPERANDO + "|" + GRUPO + ")" + "(" + BRANCOS + OPERADORMATEMATICO
+                + BRANCOS + ")" + "(" + OPERANDO + "|" + GRUPO + ")" + ")+" + BRANCOS;
 
         // Atividade 5
         NUMEROS_IMPARES = "(" + "1" + "|" + "3" + "|" + "5" + "|" + "7" + "|" + "9" + ")";
