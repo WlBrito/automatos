@@ -33,7 +33,7 @@ public class Main {
 
         ER.confere(ER.INTEIRO, "10");
 
-        // Teste 10, expressão regular: ASSINATURA FUNCAO ERROR
+        // Teste 10, expressão regular: ASSINATURA FUNCAO
         ER.confere(ER.FUNCAO, "int soma(int a, int b)"); // Correto
         ER.confere(ER.FUNCAO, "void calcularMedia(float nota1, float nota2, float nota3)"); // Correto
         ER.confere(ER.FUNCAO, "null calcularMedia(float nota1, float nota2, float nota3)"); // Erro: null não é um tipo
