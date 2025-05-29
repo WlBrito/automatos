@@ -61,6 +61,7 @@ public class ExpressaoRegular {
         ATRIBUICAO = IDENT + BRANCOS + "=" + BRANCOS + REAL;
 
         // COMEÇA AQUI EX 1 - 3
+        
         // TIPO = TIPOS PRIMITIVOS (void, int, float, double, char, String, boolean)
         TIPO = "(void|int|float|double|char|String|boolean)";
         // PARAMETROS = TIPO + ESPAÇO EM BRANCO + NOME
@@ -72,10 +73,21 @@ public class ExpressaoRegular {
         // ou seja, uma função que retorna um tipo e tem um nome seguido de parâmetros
         FUNCAO = "(" + TIPO + BRANCOS + IDENT + BRANCOS + "\\(" + PARAMS + "\\)" + ")";
         // OPERADORLOG = "==" | "!=" | "<=" | ">=" | "<" | ">"
+       
+        /*   if (3*a != 4+t)
+        AINDA COM ERRO:
+        palavra IF + BRANCOS + "\\(" + BRANCOS + CONDICAO + BRANCOS + "\\)"
+        
+        CONDICAO
+        "\\(" "(""("IDENT | EXPRESSAOMAT")" + BRANCOS + OPERADORLOG + BRANCOS + "("IDENT | EXPRESSAOMAT ")"")+"
+        
+        EXPRESSAOMAT
+        "(" + BRANCOS + "(" + NUMEROS | IDENT + ")" + OPERADORMATEMATICO + "(" NUMEROS | ")" ")+"
+        
+       */ 
         OPERADORLOG = "(==|!=|<=|>=|<|>)";
 
         OPERADORMATEMATICO = "(/|\\*|\\+|-)";
-
         // ERRO DE PARENTESES AQUI, MAS ONDE ??????
         EXPRESSAOMAT = "(" + "(" + NUMEROS + "|" + IDENT + ")" + "(" + BRANCOS + OPERADORMATEMATICO + BRANCOS + "("
                 + NUMEROS + "|" + IDENT + ")" + ")*" + ")";
